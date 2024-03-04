@@ -1,4 +1,5 @@
 import { useEffect, useState } from "preact/hooks";
+import { useRef } from "preact/hooks";
 import "./app.css";
 
 function getTimeUntilDate(date: Date): string {
@@ -12,12 +13,12 @@ function getTimeUntilDate(date: Date): string {
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    return `${days} Days, ${hours} Hours, ${minutes} Minutes, and ${seconds} ${
+    return `${days} ${days === 1 ? "Day" : "Days"}, ${hours} ${
+        hours === 1 ? "Hour" : "Hours"
+    }, ${minutes} ${minutes === 1 ? "Minute" : "Minutes"}, and ${seconds} ${
         seconds === 1 ? "Second" : "Seconds"
     }`;
 }
-
-import { useRef } from "preact/hooks";
 
 export function App() {
     const ctfDate = new Date("May 24, 2024 00:00:00");
@@ -36,7 +37,6 @@ export function App() {
             clearInterval(countdownInterval);
         };
     }, []);
-
 
     const handleMouseMove = (event: MouseEvent) => {
         if (backgroundRef.current) {
