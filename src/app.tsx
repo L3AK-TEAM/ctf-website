@@ -21,7 +21,7 @@ function getTimeUntilDate(date: Date): string {
 }
 
 export function App() {
-    const ctfDate = new Date("May 24, 2024 00:00:00");
+    const ctfDate = new Date("2024-05-24T12:00:00.000Z");
     const [countdown, setCountdown] = useState(getTimeUntilDate(ctfDate));
 
     const backgroundRef = useRef<HTMLDivElement>(null);
