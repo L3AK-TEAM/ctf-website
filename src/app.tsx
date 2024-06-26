@@ -1,42 +1,8 @@
-import { useEffect, useState } from "preact/hooks";
 import { useRef } from "preact/hooks";
 import "./app.css";
 
-function getTimeUntilDate(date: Date): string {
-    const now = new Date().getTime();
-    const distance = date.getTime() - now;
-
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-    );
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    return `${days} ${days === 1 ? "Day" : "Days"}, ${hours} ${
-        hours === 1 ? "Hour" : "Hours"
-    }, ${minutes} ${minutes === 1 ? "Minute" : "Minutes"}, and ${seconds} ${
-        seconds === 1 ? "Second" : "Seconds"
-    }`;
-}
-
 export function App() {
-    const ctfDate = new Date("2024-05-24T12:00:00.000Z");
-    const [countdown, setCountdown] = useState(getTimeUntilDate(ctfDate));
-
     const backgroundRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        const updateCountdown = () => {
-            setCountdown(getTimeUntilDate(ctfDate));
-        };
-
-        const countdownInterval = setInterval(updateCountdown, 1000);
-
-        return () => {
-            clearInterval(countdownInterval);
-        };
-    }, []);
 
     const handleMouseMove = (event: MouseEvent) => {
         if (backgroundRef.current) {
@@ -56,8 +22,8 @@ export function App() {
                 ref={backgroundRef}
             >
                 <main className="px-4">
-                    <h1>L3ak CTF starts in</h1>
-                    <h2>{countdown}</h2>
+                    <h1>Thank you for playing L3ak CTF 2024!</h1>
+                    <h2>We hope to see you again next year :)</h2>
                 </main>
             </div>
         </>
