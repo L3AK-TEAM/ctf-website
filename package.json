@@ -9,7 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "preact": "^10.19.5"
+    "@types/three": "^0.174.0",
+    "preact": "^10.19.5",
+    "three": "^0.174.0"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.8.1",
